@@ -107,11 +107,19 @@ def person():
     print("person\n")
 
 
+def input_person():
+    pass
+
+
 # ----- Corporate -----
 
 
 def corporate():
     print("corporate\n")
+
+
+def input_corporate():
+    pass
 
 
 # ----- Main function -----
