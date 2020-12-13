@@ -49,7 +49,7 @@ starting_number = 0
 ending_number = 99
 words_in_passphrase_max = 2
 items_limit = 200000
-print_every = 100 # print update every n items created
+print_every = 100  # print update every n items created
 
 # ----- Initial swag -----
 
@@ -101,7 +101,40 @@ def create_output_folder():
         os.makedirs(directory)
 
 
+def create_output_file(input_filename):
+
+    create_output_folder()
+    filename = directory + "/" + input_filename
+
+    if os.path.exists(filename):
+        choice = input(
+            "{} already exists. Do you want to overwrite? (y/n):".format(input_filename)
+        )
+        if str(choice) == "n":
+            exit(1)
+        if str(choice) == "y":
+            os.mknod(filename)
+    else:
+        os.mknod(filename)
+
+
 # ----- Person -----
+
+
+name = ""
+middle_name = ""
+surname = ""
+nickname = ""
+age = ""
+birth_day = ""
+birth_month = ""
+birth_year = ""
+email = ""
+birth_place = ""
+first_pet = ""
+second_pet = ""
+favourite_band = ""
+person_keywords = []
 
 
 def person():
@@ -113,6 +146,11 @@ def input_person():
 
 
 # ----- Corporate -----
+
+
+name = ""
+web_domain = ""
+corporate_keywords = []
 
 
 def corporate():
