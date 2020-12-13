@@ -21,4 +21,19 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 # ----- Import external libraries -----
 import argparse
 
+# ----- Initial swag -----
+
+
+def banner():
+    print("LONGTONGUE")
+    print("")
+    print("edoardottt |- github.com/edoardottt")
+    print("           |- edoardoottavianelli.it")
+    print("GPLv3 License")
+
+
+def version():
+    print("0.1")
+
+
 # ----- Input -----
