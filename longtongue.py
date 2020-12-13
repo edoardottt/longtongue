@@ -112,8 +112,7 @@ def create_output_file(input_filename):
         )
         if str(choice) == "n":
             exit(1)
-        if str(choice) == "y":
-            os.mknod(filename)
+        # if choice == y: ====> go forward. The file's content will be flushed and overwritten
     else:
         os.mknod(filename)
 
@@ -183,3 +182,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    create_output_file("ciao")
