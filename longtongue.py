@@ -48,6 +48,7 @@ ending_year = 2020
 starting_number = 0
 ending_number = 99
 words_in_passphrase_max = 2
+items_limit = 200000
 
 # ----- Initial swag -----
 
