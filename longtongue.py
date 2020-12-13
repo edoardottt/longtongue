@@ -99,9 +99,6 @@ def create_output_folder():
         os.makedirs(directory)
 
 
-# def enter_input():
-
-
 # ----- Person -----
 
 
