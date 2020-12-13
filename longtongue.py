@@ -58,6 +58,7 @@ def banner():
     print("edoardottt |- github.com/edoardottt")
     print("           |- edoardoottavianelli.it")
     print("GPLv3 License")
+    print("------------------------")
 
 
 def version():
@@ -98,6 +99,9 @@ def create_output_folder():
         os.makedirs(directory)
 
 
+# def enter_input():
+
+
 # ----- Person -----
 
 
@@ -130,3 +134,7 @@ def main():
         person()
     else:
         parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
