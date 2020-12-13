@@ -47,6 +47,15 @@ def get_parser():
     )
     group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument(
+        "-p", "--person", action="store_true", help="Set the target to be a person."
+    )
+    group.add_argument(
+        "-c",
+        "--corporate",
+        action="store_true",
+        help="Set the target to be a corporate.",
+    )
+    group.add_argument(
         "-v", "--version", action="store_true", help="Show the version of this program."
     )
     parser.add_argument(
