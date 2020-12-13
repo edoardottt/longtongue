@@ -38,7 +38,7 @@ def version():
 
 # ----- Input -----
 
-# Separate into a function for testing purposes
+
 def get_parser():
     """Create and return a parser (argparse.ArgumentParser instance) for main()
     to use"""
