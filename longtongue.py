@@ -22,6 +22,33 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 import argparse
 import os
 
+
+# ----- Global variables -----
+
+symbols = [
+    ",",
+    ".",
+    "-",
+    "_",
+    "?",
+    "!",
+    "@",
+    "#",
+    "+",
+    "*",
+    "(",
+    ")",
+    "%",
+    "&",
+    "$",
+]
+directory = "output"
+starting_year = 1900
+ending_year = 2020
+starting_number = 0
+ending_number = 99
+words_in_passphrase_max = 2
+
 # ----- Initial swag -----
 
 
@@ -62,27 +89,6 @@ def get_parser():
 
     return parser
 
-
-# ----- Global variables -----
-
-symbols = [
-    ",",
-    ".",
-    "-",
-    "_",
-    "?",
-    "!",
-    "@",
-    "#",
-    "+",
-    "*",
-    "(",
-    ")",
-    "%",
-    "&",
-    "$",
-]
-directory = "output"
 
 # ----- Utils -----
 
