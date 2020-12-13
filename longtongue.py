@@ -58,8 +58,10 @@ def get_parser():
     group.add_argument(
         "-v", "--version", action="store_true", help="Show the version of this program."
     )
-    parser.add_argument(
-        "-q", "--quiet", action="store_true", help="Quiet mode (don't print banner)"
-    )
 
     return parser
+
+
+# ----- Global variables -----
+
+symbols = [",", ".", "-", "_", "?", "!", "@", "#", "+", "*", "(", ")"]
