@@ -20,6 +20,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 
 # ----- Import external libraries -----
 import argparse
+import os
 
 # ----- Initial swag -----
 
@@ -33,7 +34,7 @@ def banner():
 
 
 def version():
-    print("0.1")
+    print("0.1\n")
 
 
 # ----- Input -----
@@ -64,4 +65,62 @@ def get_parser():
 
 # ----- Global variables -----
 
-symbols = [",", ".", "-", "_", "?", "!", "@", "#", "+", "*", "(", ")"]
+symbols = [
+    ",",
+    ".",
+    "-",
+    "_",
+    "?",
+    "!",
+    "@",
+    "#",
+    "+",
+    "*",
+    "(",
+    ")",
+    "%",
+    "&",
+    "$",
+]
+directory = "output"
+
+# ----- Utils -----
+
+
+def create_output_folder():
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+
+# ----- Person -----
+
+
+def person():
+    print("person\n")
+
+
+# ----- Corporate -----
+
+
+def corporate():
+    print("corporate\n")
+
+
+# ----- Main function -----
+
+
+def main():
+
+    banner()
+
+    parser = get_parser()
+    args = parser.parse_args()
+
+    if args.version:
+        version()
+    elif args.corporate:
+        corporate()
+    elif args.person:
+        person()
+    else:
+        parser.print_help()
