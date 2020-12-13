@@ -37,3 +37,20 @@ def version():
 
 
 # ----- Input -----
+
+# Separate into a function for testing purposes
+def get_parser():
+    """Create and return a parser (argparse.ArgumentParser instance) for main()
+    to use"""
+    parser = argparse.ArgumentParser(
+        description="Customized Password/Passphrase List inputting Target Info"
+    )
+    group = parser.add_mutually_exclusive_group(required=False)
+    group.add_argument(
+        "-v", "--version", action="store_true", help="Show the version of this program."
+    )
+    parser.add_argument(
+        "-q", "--quiet", action="store_true", help="Quiet mode (don't print banner)"
+    )
+
+    return parser
