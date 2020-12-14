@@ -56,12 +56,12 @@ print_every = 100  # print update every n items created
 
 def banner():
     print("")
-    print(" _                   _                               ")
-    print("| | ___  _ __   __ _| |_ ___  _ __   __ _ _   _  ___ ")
-    print("| |/ _ \| '_ \ / _` | __/ _ \| '_ \ / _` | | | |/ _ \\")
-    print("| | (_) | | | | (_| | || (_) | | | | (_| | |_| |  __/")
-    print("|_|\___/|_| |_|\__, |\__\___/|_| |_|\__, |\__,_|\___|")
-    print("               |___/                |___/    ")
+    print(r" _                   _                               ")
+    print(r"| | ___  _ __   __ _| |_ ___  _ __   __ _ _   _  ___ ")
+    print(r"| |/ _ \| '_ \ / _` | __/ _ \| '_ \ / _` | | | |/ _ \\")
+    print(r"| | (_) | | | | (_| | || (_) | | | | (_| | |_| |  __/")
+    print(r"|_|\___/|_| |_|\__, |\__\___/|_| |_|\__, |\__,_|\___|")
+    print(r"               |___/                |___/    ")
     print("")
     print("github.com/edoardottt/longtongue")
     print("edoardottt ~ edoardoottavianelli.it")
