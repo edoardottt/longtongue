@@ -21,7 +21,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 # ----- Import external libraries -----
 import argparse
 import os
-
+import itertools
 
 # ----- Global variables -----
 
@@ -47,7 +47,7 @@ starting_year = 1900
 ending_year = 2020
 starting_number = 0
 ending_number = 99
-words_in_passphrase_max = 2
+words_in_passphrase_max = 2  # HIGHLY recommended: don't edit this
 items_limit = 200000
 print_every = 100  # print update every n items created
 
@@ -130,6 +130,16 @@ def prepare_keywords(str_input):
         if elem.strip() != "":
             result.append(elem.strip())
     return result
+
+
+def create_subsets(list_input, k):
+    """
+    It returns all the subsets (length k) of list_input
+    """
+    unique_words = set(list_input)
+    subsets = itertools.combinations(unique_words, k)
+
+    return subsets
 
 
 # ----- Person -----
