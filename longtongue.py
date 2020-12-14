@@ -159,13 +159,29 @@ class Person:
 
 def person():
     print("person\n")
+    input_person()
 
 
 def input_person():
 
     target = Person()
 
-    # here input check
+    target.name = input("Name: ")
+    target.middle_name = input("Middle Name: ")
+    target.surname = input("Surname :")
+    target.nickname = input("Nickname: ")
+    target.username = input("Username: ")
+    target.age = input("Age: ")
+    target.birth_day = input("Birth day: ")
+    target.birth_month = input("Birth month: ")
+    target.birth_year = input("Birth year: ")
+    target.email = input("Email: ")
+    target.birth_place = input("Birth place: ")
+    target.first_pet = input("First pet: ")
+    target.second_pet = input("Second pet: ")
+    target.favourite_band = input("Favourite Band")
+
+    # person_keywords = input("Useful keywords (separated by comma)")
 
     return target
 
@@ -188,13 +204,17 @@ class Corporate:
 
 def corporate():
     print("corporate\n")
+    input_corporate()
 
 
 def input_corporate():
 
     target = Corporate()
 
-    # here input check
+    target.name = input("Name: ")
+    target.birth_year = input("Birth year: ")
+
+    # corporate_keywords = input("Useful keywords (separated by comma)")
 
     return target
 
