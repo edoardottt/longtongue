@@ -142,6 +142,29 @@ def create_subsets(list_input, k):
     return subsets
 
 
+def trivial_pwds(target, file):
+    """
+    It writes the trivial pwds into output file
+    """
+    attributes = vars(target)
+    attributes = flush_None_values(attributes.values())
+
+    attributes = [elem for elem in attributes if not isinstance(elem, list)]
+
+    with open(file, "w+") as f:
+        for elem in attributes:
+            f.write(elem + "\n")
+            for symbol in symbols:
+                f.write(symbol + elem + "\n")
+                f.write(elem + symbol + "\n")
+                for i in range(starting_number, ending_number + 1):
+                    f.write(elem + symbol + str(i) + "\n")
+
+
+def flush_None_values(list_input):
+    return [elem for elem in list_input if elem is not None]
+
+
 # ----- Person -----
 
 
@@ -185,12 +208,23 @@ class Person:
 def person():
     print("person\n")
     target = input_person()
+    default_output = False
 
     # output filename
     if target.name and target.name != "":
         create_output_file(target.name + "-" + target.surname + ".txt")
+
     else:
         create_output_file("longtongue-output.txt")
+        default_output = True
+
+    if default_output:
+        output_file = "output/" + "longtongue-output.txt"
+    else:
+        output_file = "output/" + target.name + "-" + target.surname + ".txt"
+
+    # real computation here
+    trivial_pwds(target, output_file)
 
 
 def input_person():
@@ -241,12 +275,22 @@ class Corporate:
 def corporate():
     print("corporate\n")
     target = input_corporate()
+    default_output = False
 
     # output filename
     if target.name and target.name != "":
         create_output_file(target.name + ".txt")
     else:
         create_output_file("longtongue-output.txt")
+        default_output = True
+
+    if default_output:
+        output_file = "output/" + "longtongue-output.txt"
+    else:
+        output_file = "output/" + target.name + ".txt"
+
+    # real computation here
+    trivial_pwds(target, output_file)
 
 
 def input_corporate():
