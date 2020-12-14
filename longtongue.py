@@ -117,6 +117,21 @@ def create_output_file(input_filename):
         os.mknod(filename)
 
 
+def prepare_keywords(str_input):
+    """
+    It outputs None if blank
+    It outputs an array if valid
+    """
+    if not str_input or len(str_input) == 0:
+        return None
+    temp = str_input.split(",")
+    result = []
+    for elem in temp:
+        if elem.strip() != "":
+            result.append(elem.strip())
+    return result
+
+
 # ----- Person -----
 
 
@@ -153,22 +168,31 @@ class Person:
         self.birth_place = birth_place
         self.first_pet = first_pet
         self.second_pet = second_pet
-        self.favourite_band = self.favourite_band
+        self.favourite_band = favourite_band
         self.person_keywords = person_keywords
 
 
 def person():
     print("person\n")
-    input_person()
+    target = input_person()
+
+    # output filename
+    if target.name and target.name != "":
+        create_output_file(target.name + "-" + target.surname + ".txt")
+    else:
+        create_output_file("longtongue-output.txt")
 
 
 def input_person():
 
     target = Person()
 
+    print(
+        "Enter all the information you know. Leave blank and hit enter if you don't know.\n"
+    )
     target.name = input("Name: ")
     target.middle_name = input("Middle Name: ")
-    target.surname = input("Surname :")
+    target.surname = input("Surname: ")
     target.nickname = input("Nickname: ")
     target.username = input("Username: ")
     target.age = input("Age: ")
@@ -179,9 +203,11 @@ def input_person():
     target.birth_place = input("Birth place: ")
     target.first_pet = input("First pet: ")
     target.second_pet = input("Second pet: ")
-    target.favourite_band = input("Favourite Band")
+    target.favourite_band = input("Favourite Band: ")
 
-    # person_keywords = input("Useful keywords (separated by comma)")
+    person_keywords = input("Useful keywords (separated by comma): ")
+
+    target.person_keywords = prepare_keywords(person_keywords)
 
     return target
 
@@ -204,17 +230,27 @@ class Corporate:
 
 def corporate():
     print("corporate\n")
-    input_corporate()
+    target = input_corporate()
+
+    # output filename
+    if target.name and target.name != "":
+        create_output_file(target.name + ".txt")
+    else:
+        create_output_file("longtongue-output.txt")
 
 
 def input_corporate():
 
     target = Corporate()
 
+    print(
+        "Enter all the information you know. Leave blank and hit enter if you don't know.\n"
+    )
     target.name = input("Name: ")
     target.birth_year = input("Birth year: ")
 
-    # corporate_keywords = input("Useful keywords (separated by comma)")
+    corporate_keywords = input("Useful keywords (separated by comma): ")
+    target.corporate_keywords = prepare_keywords(corporate_keywords)
 
     return target
 
