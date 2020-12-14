@@ -120,20 +120,41 @@ def create_output_file(input_filename):
 # ----- Person -----
 
 
-name = ""
-middle_name = ""
-surname = ""
-nickname = ""
-age = ""
-birth_day = ""
-birth_month = ""
-birth_year = ""
-email = ""
-birth_place = ""
-first_pet = ""
-second_pet = ""
-favourite_band = ""
-person_keywords = []
+class Person:
+    def __init__(
+        self,
+        name,
+        middle_name,
+        surname,
+        nickname,
+        username,
+        age,
+        birth_day,
+        birth_month,
+        birth_year,
+        email,
+        birth_place,
+        first_pet,
+        second_pet,
+        favourite_band,
+        person_keywords,
+    ):
+
+        self.name = name
+        self.middle_name = middle_name
+        self.surname = surname
+        self.nickname = nickname
+        self.username = username
+        self.age = age
+        self.birth_day = birth_day
+        self.birth_month = birth_month
+        self.birth_year = birth_year
+        self.email = email
+        self.birth_place = birth_place
+        self.first_pet = first_pet
+        self.second_pet = second_pet
+        self.favourite_band = self.favourite_band
+        self.person_keywords = person_keywords
 
 
 def person():
@@ -149,7 +170,21 @@ def input_person():
 
 name = ""
 web_domain = ""
+birth_year = ""
 corporate_keywords = []
+
+
+class Corporate:
+    def __init__(
+        self,
+        name,
+        birth_year,
+        corporate_keywords,
+    ):
+
+        self.name = name
+        self.birth_year = birth_year
+        self.corporate_keywords = corporate_keywords
 
 
 def corporate():
