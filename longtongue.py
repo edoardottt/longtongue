@@ -134,7 +134,7 @@ def prepare_keywords(str_input):
 
 def create_subsets(list_input, k):
     """
-    It returns all the subsets (length k) of list_input
+    It returns all the subsets (with k elements) of list_input
     """
     unique_words = set(list_input)
     subsets = itertools.combinations(unique_words, k)
