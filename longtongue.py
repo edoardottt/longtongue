@@ -263,11 +263,13 @@ class Corporate:
     def __init__(
         self,
         name=None,
+        web_domain=None,
         birth_year=None,
         corporate_keywords=None,
     ):
 
         self.name = name
+        self.web_domain = web_domain
         self.birth_year = birth_year
         self.corporate_keywords = corporate_keywords
 
@@ -301,6 +303,7 @@ def input_corporate():
         "Enter all the information you know. Leave blank and hit enter if you don't know.\n"
     )
     target.name = input("Name: ")
+    target.web_domain = input("Web domain (without protocol): ")
     target.birth_year = input("Birth year: ")
 
     corporate_keywords = input("Useful keywords (separated by comma): ")
