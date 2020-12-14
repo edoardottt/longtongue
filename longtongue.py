@@ -123,21 +123,21 @@ def create_output_file(input_filename):
 class Person:
     def __init__(
         self,
-        name,
-        middle_name,
-        surname,
-        nickname,
-        username,
-        age,
-        birth_day,
-        birth_month,
-        birth_year,
-        email,
-        birth_place,
-        first_pet,
-        second_pet,
-        favourite_band,
-        person_keywords,
+        name=None,
+        middle_name=None,
+        surname=None,
+        nickname=None,
+        username=None,
+        age=None,
+        birth_day=None,
+        birth_month=None,
+        birth_year=None,
+        email=None,
+        birth_place=None,
+        first_pet=None,
+        second_pet=None,
+        favourite_band=None,
+        person_keywords=None,
     ):
 
         self.name = name
@@ -162,24 +162,23 @@ def person():
 
 
 def input_person():
-    pass
+
+    target = Person()
+
+    # here input check
+
+    return target
 
 
 # ----- Corporate -----
 
 
-name = ""
-web_domain = ""
-birth_year = ""
-corporate_keywords = []
-
-
 class Corporate:
     def __init__(
         self,
-        name,
-        birth_year,
-        corporate_keywords,
+        name=None,
+        birth_year=None,
+        corporate_keywords=None,
     ):
 
         self.name = name
@@ -192,7 +191,12 @@ def corporate():
 
 
 def input_corporate():
-    pass
+
+    target = Corporate()
+
+    # here input check
+
+    return target
 
 
 # ----- Main function -----
