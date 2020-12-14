@@ -110,7 +110,7 @@ def create_output_file(input_filename):
         choice = input(
             "{} already exists. Do you want to overwrite? (y/n):".format(input_filename)
         )
-        if str(choice) == "n":
+        if str(choice).lower() == "n":
             exit(1)
         # if choice == y: ====> go forward. The file's content will be flushed and overwritten
     else:
