@@ -96,6 +96,11 @@ def get_parser():
         "-v", "--version", action="store_true", help="Show the version of this program."
     )
 
+    group_two = parser.add_mutually_exclusive_group(required=False)
+    group_two.add_argument(
+        "-l", "--leet", action="store_true", help="Add also 1337(leet) passwords."
+    )
+
     return parser
 
 
@@ -229,7 +234,7 @@ def trivial_pwds(attributes, file):
                         f.write(symbol + elem + str(i) + "\n")
 
 
-def combinations():
+def combinations(attributes, output_file):
     """
     It writes the combinations between all the elements involved:
     attributes, keywords, numbers, symbols
@@ -237,10 +242,17 @@ def combinations():
     pass
 
 
-def common_passwords():
+def common_passwords(attributes, output_file):
     """
     It writes the common customized passwords:
     password, admin, 12345678 ...
+    """
+    pass
+
+
+def leet_pwds(attributes, output_file):
+    """
+    1337 passwords
     """
     pass
 
@@ -285,7 +297,7 @@ class Person:
         self.person_keywords = person_keywords
 
 
-def person():
+def person(add_leet):
     print("person\n")
     target = input_person()
     default_output = False
@@ -308,6 +320,9 @@ def person():
     attributes = attr_keywords_in_unique_list(target)
 
     trivial_pwds(attributes, output_file)
+
+    if add_leet:
+        leet_pwds(attributes, output_file)
 
 
 def input_person():
@@ -357,7 +372,7 @@ class Corporate:
         self.corporate_keywords = corporate_keywords
 
 
-def corporate():
+def corporate(add_leet):
     print("corporate\n")
     target = input_corporate()
     default_output = False
@@ -379,6 +394,9 @@ def corporate():
     attributes = attr_keywords_in_unique_list(target)
 
     trivial_pwds(attributes, output_file)
+
+    if add_leet:
+        leet_pwds(attributes, output_file)
 
 
 def input_corporate():
@@ -411,9 +429,9 @@ def main():
     if args.version:
         version()
     elif args.corporate:
-        corporate()
+        corporate(args.leet)
     elif args.person:
-        person()
+        person(args.leet)
     else:
         parser.print_help()
 
