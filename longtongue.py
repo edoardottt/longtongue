@@ -131,7 +131,9 @@ def create_output_file(input_filename):
 
     if os.path.exists(filename):
         choice = input(
-            "{} already exists. Do you want to overwrite? (y/n):".format(input_filename)
+            "[!] {} already exists. Do you want to overwrite? (y/n):".format(
+                input_filename
+            )
         )
         if str(choice).lower() == "n":
             exit(1)
@@ -383,22 +385,22 @@ def input_person():
     print(
         "Enter all the information you know. Leave blank and hit enter if you don't know.\n"
     )
-    target.name = input("Name: ")
-    target.middle_name = input("Middle Name: ")
-    target.surname = input("Surname: ")
-    target.nickname = input("Nickname: ")
-    target.username = input("Username: ")
-    target.age = input("Age: ")
-    target.birth_day = input("Birth day: ")
-    target.birth_month = input("Birth month: ")
-    target.birth_year = input("Birth year(YYYY): ")
-    target.email = input("Email: ")
-    target.birth_place = input("Birth place: ")
-    target.first_pet = input("First pet: ")
-    target.second_pet = input("Second pet: ")
-    target.favourite_band = input("Favourite Band: ")
+    target.name = input("[>] Name: ")
+    target.middle_name = input("[>] Middle Name: ")
+    target.surname = input("[>] Surname: ")
+    target.nickname = input("[>] Nickname: ")
+    target.username = input("[>] Username: ")
+    target.age = input("[>] Age: ")
+    target.birth_day = input("[>] Birth day: ")
+    target.birth_month = input("[>] Birth month: ")
+    target.birth_year = input("[>] Birth year(YYYY): ")
+    target.email = input("[>] Email: ")
+    target.birth_place = input("[>] Birth place: ")
+    target.first_pet = input("[>] First pet: ")
+    target.second_pet = input("[>] Second pet: ")
+    target.favourite_band = input("[>] Favourite Band: ")
 
-    person_keywords = input("Useful keywords (separated by comma): ")
+    person_keywords = input("[>] Useful keywords (separated by comma): ")
 
     target.person_keywords = prepare_keywords(person_keywords)
 
@@ -457,11 +459,11 @@ def input_corporate():
     print(
         "Enter all the information you know. Leave blank and hit enter if you don't know.\n"
     )
-    target.name = input("Name: ")
-    target.web_domain = input("Web domain (without protocol): ")
-    target.birth_year = input("Birth year (YYYY): ")
+    target.name = input("[>] Name: ")
+    target.web_domain = input("[>] Web domain (without protocol): ")
+    target.birth_year = input("[>] Birth year (YYYY): ")
 
-    corporate_keywords = input("Useful keywords (separated by comma): ")
+    corporate_keywords = input("[>] Useful keywords (separated by comma): ")
     target.corporate_keywords = prepare_keywords(corporate_keywords)
 
     return target
