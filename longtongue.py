@@ -55,13 +55,13 @@ common_pwds = [
     "11111111",
 ]
 directory = "output"
-starting_year = 1960
+starting_year = 1990
 ending_year = 2020
 starting_number = 0
 ending_number = 99
 words_in_passphrase_max = 2  # HIGHLY recommended: don't edit this
-items_limit = 200000
-print_every = 100  # print update every n items created
+items_limit = 200000  # unuseful now
+
 
 # ----- Initial swag -----
 
@@ -155,12 +155,12 @@ def prepare_keywords(str_input):
     return result
 
 
-def create_subsets(list_input, k):
+def create_permutations_with_repetition(list_input, k):
     """
-    It returns all the subsets (with k elements) of list_input
+    It returns all the permutations with repetitions (with k elements) of list_input
     """
     unique_words = set(list_input)
-    subsets = itertools.combinations(unique_words, k)
+    subsets = [p for p in itertools.product(unique_words, repeat=k)]
 
     return subsets
 
@@ -187,13 +187,13 @@ def attr_keywords_in_unique_list(target):
     return attributes
 
 
-def trivial_pwds(attributes, file):
+def trivial_pwds(attributes, output_file):
     """
     It writes the trivial pwds into output file.
     It doesn't write short pwds (length == 5 ).
     """
 
-    with open(file, "w+") as f:
+    with open(output_file, "w+") as f:
 
         for elem in attributes:
             f.write(elem + "\n")
@@ -203,55 +203,92 @@ def trivial_pwds(attributes, file):
                 Symbol and attribute
                 """
                 if elem.lower() != elem.capitalize():
-                    f.write(symbol + elem.lower() + "\n")
-                    f.write(symbol + elem.upper() + "\n")
-                    f.write(symbol + elem.capitalize() + "\n")
                     f.write(elem.lower() + symbol + "\n")
                     f.write(elem.upper() + symbol + "\n")
                     f.write(elem.capitalize() + symbol + "\n")
                 else:
-                    f.write(symbol + elem + "\n")
                     f.write(elem + symbol + "\n")
 
                 # check length
                 if len(elem) > 2:
-                    for i in range(starting_number, ending_number + 1):
+                    for number in range(starting_number, ending_number + 1):
                         """
                         Symbol, attribute and number
                         """
                         if elem.lower() != elem.capitalize():
-                            f.write(symbol + elem.lower() + str(i) + "\n")
-                            f.write(symbol + elem.upper() + str(i) + "\n")
-                            f.write(symbol + elem.capitalize() + str(i) + "\n")
-                            f.write(elem.lower() + symbol + str(i) + "\n")
-                            f.write(elem.upper() + symbol + str(i) + "\n")
-                            f.write(elem.capitalize() + symbol + str(i) + "\n")
+                            f.write(elem.lower() + symbol + str(number) + "\n")
+                            f.write(elem.upper() + symbol + str(number) + "\n")
+                            f.write(elem.capitalize() + symbol + str(number) + "\n")
                         else:
-                            f.write(elem + symbol + str(i) + "\n")
-                            f.write(symbol + elem + str(i) + "\n")
+                            f.write(elem + symbol + str(number) + "\n")
 
-                for i in range(starting_year, ending_year + 1):
+                for year in range(starting_year, ending_year + 1):
                     """
                     Symbol, attribute and year
                     """
                     if elem.lower() != elem.capitalize():
-                        f.write(symbol + elem.lower() + str(i) + "\n")
-                        f.write(symbol + elem.upper() + str(i) + "\n")
-                        f.write(symbol + elem.capitalize() + str(i) + "\n")
-                        f.write(elem.lower() + symbol + str(i) + "\n")
-                        f.write(elem.upper() + symbol + str(i) + "\n")
-                        f.write(elem.capitalize() + symbol + str(i) + "\n")
+                        f.write(elem.lower() + symbol + str(year) + "\n")
+                        f.write(elem.upper() + symbol + str(year) + "\n")
+                        f.write(elem.capitalize() + symbol + str(year) + "\n")
                     else:
-                        f.write(elem + symbol + str(i) + "\n")
-                        f.write(symbol + elem + str(i) + "\n")
+                        f.write(elem + symbol + str(year) + "\n")
 
 
-def combinations(attributes, output_file):
+def permutations(attributes, output_file):
     """
     It writes the combinations between all the elements involved:
     attributes, keywords, numbers, symbols
     """
-    pass
+    subsets = create_permutations_with_repetition(attributes, words_in_passphrase_max)
+
+    with open(output_file, "a+") as f:
+        for subset in subsets:
+
+            # ATTENTION - THIS WORKS WITH words_in_passphrase_max = 2 ONLY !
+            par1, par2 = subset
+
+            f.write(par1 + par2 + "\n")  # par1 par2
+
+            for symbol in symbols:
+                f.write(par1 + symbol + par2 + "\n")  # par1 symbol par2
+                f.write(par1 + par2 + symbol + "\n")  # par1 par2 symbol
+
+                for number in range(starting_number, ending_number + 1):
+                    f.write(
+                        par1 + symbol + par2 + str(number) + "\n"
+                    )  # par1 symbol par2 number
+                    f.write(
+                        par1 + par2 + symbol + str(number) + "\n"
+                    )  # par1 par2 symbol number
+
+                for year in range(starting_year, ending_year + 1):
+                    f.write(
+                        par1 + symbol + par2 + str(year) + "\n"
+                    )  # par1 symbol par2 year
+                    f.write(
+                        par1 + par2 + symbol + str(year) + "\n"
+                    )  # par1 par2 symbol year
+
+                for symbol2 in symbols:
+                    f.write(
+                        par1 + symbol + par2 + symbol2 + "\n"
+                    )  # par1 symbol par2 symbol
+
+                    for number in range(starting_number, starting_number + 1):
+                        f.write(
+                            par1 + symbol + par2 + symbol2 + str(number) + "\n"
+                        )  # par1 symbol par2 symbol number
+
+                    for year in range(starting_year, ending_year + 1):
+                        f.write(
+                            par1 + symbol + par2 + symbol2 + str(year) + "\n"
+                        )  # par1 symbol par2 symbol year
+
+            for number in range(starting_number, ending_number + 1):
+                f.write(par1 + par2 + str(number) + "\n")  # par1 par2 number
+
+            for year in range(starting_year, ending_year + 1):
+                f.write(par1 + par2 + str(year) + "\n")  # par1 par2 year
 
 
 def common_passwords(attributes, output_file):
@@ -332,6 +369,8 @@ def person(add_leet):
     attributes = attr_keywords_in_unique_list(target)
 
     trivial_pwds(attributes, output_file)
+
+    permutations(attributes, output_file)
 
     if add_leet:
         leet_pwds(attributes, output_file)
