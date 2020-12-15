@@ -18,4 +18,4 @@ optional arguments:
   -n, --numbers    Add also numbers at password. See numbers range inside longtongue.py.
   ```
 
-## [Examples](https://github.com/edoardottt/longtongue/wiki/Examples)
+[Examples](https://github.com/edoardottt/longtongue/wiki/Examples)
