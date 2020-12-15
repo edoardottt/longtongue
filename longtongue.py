@@ -115,9 +115,9 @@ def get_parser():
     )
     group.add_argument(
         "-c",
-        "--corporate",
+        "--company",
         action="store_true",
-        help="Set the target to be a corporate",
+        help="Set the target to be a company",
     )
     group.add_argument(
         "-v", "--version", action="store_true", help="Show the version of this program"
@@ -497,27 +497,27 @@ def input_person():
     return target
 
 
-# ----- Corporate -----
+# ----- Company -----
 
 
-class Corporate:
+class Company:
     def __init__(
         self,
         name=None,
         web_domain=None,
         birth_year=None,
-        corporate_keywords=None,
+        company_keywords=None,
     ):
 
         self.name = name
         self.web_domain = web_domain
         self.birth_year = birth_year
-        self.corporate_keywords = corporate_keywords
+        self.company_keywords = company_keywords
 
 
-def corporate(add_leet, years, leetall, numbers):
-    print("Targeting a corporate.\n")
-    target = input_corporate()
+def company(add_leet, years, leetall, numbers):
+    print("Targeting a company.\n")
+    target = input_company()
     default_output = False
 
     # output filename
@@ -546,9 +546,9 @@ def corporate(add_leet, years, leetall, numbers):
         leet_pwds(leetall, output_file)
 
 
-def input_corporate():
+def input_company():
 
-    target = Corporate()
+    target = Company()
 
     print(
         "Enter all the information you know. Leave blank and hit enter if you don't know.\n"
@@ -557,8 +557,8 @@ def input_corporate():
     target.web_domain = input("[>] Web domain (without protocol): ")
     target.birth_year = input("[>] Birth year (YYYY): ")
 
-    corporate_keywords = input("[>] Useful keywords (separated by comma): ")
-    target.corporate_keywords = prepare_keywords(corporate_keywords)
+    company_keywords = input("[>] Useful keywords (separated by comma): ")
+    target.company_keywords = prepare_keywords(company_keywords)
 
     return target
 
@@ -575,8 +575,8 @@ def main():
 
     if args.version:
         version()
-    elif args.corporate:
-        corporate(args.leet, args.years, args.leetall, args.numbers)
+    elif args.company:
+        company(args.leet, args.years, args.leetall, args.numbers)
     elif args.person:
         person(args.leet, args.years, args.leetall, args.numbers)
     else:
