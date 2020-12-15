@@ -51,13 +51,26 @@ common_pwds = [
     "qwerty123",
     "11111111",
 ]
+leet_chars = {letter: str(index) for index, letter in enumerate("oizeasgtb")}
+"""
+leet_chars:
+{   'a': '4',
+    'b': '8',
+    'e': '3',
+    'g': '6',
+    'i': '1',
+    'o': '0',
+    's': '5',
+    't': '7',
+    'z': '2',}
+"""
 directory = "output"
 starting_year = 1990
 ending_year = 2020
 starting_number = 0
 ending_number = 99
 words_in_passphrase_max = 2  # HIGHLY recommended: don't edit this
-items_limit = 200000  # unuseful now
+items_limit = 200000  # unused now
 
 
 # ----- Initial swag -----
@@ -107,15 +120,26 @@ def get_parser():
 
     group_two = parser.add_mutually_exclusive_group(required=False)
     group_two.add_argument(
-        "-l", "--leet", action="store_true", help="Add also 1337(leet) passwords."
+        "-l",
+        "--leet",
+        action="store_true",
+        help="Add also complete 1337(leet) passwords.",
     )
     group_two.add_argument(
+        "-L",
+        "--leetall",
+        action="store_true",
+        help="Add also ALL possible le37(leet) passwords.",
+    )
+    group_three = parser.add_mutually_exclusive_group(required=False)
+    group_three.add_argument(
         "-y",
         "--years",
         action="store_true",
         help="Add also years at password. See years range inside longtongue.py.",
     )
-    group_two.add_argument(
+    group_four = parser.add_mutually_exclusive_group(required=False)
+    group_four.add_argument(
         "-n",
         "--numbers",
         action="store_true",
@@ -144,7 +168,7 @@ def create_output_file(input_filename):
                 input_filename
             )
         )
-        if str(choice).lower() == "n":
+        if str(choice).lower() != "y":
             exit(1)
         # if choice == y: ====> go forward. The file's content will be flushed and overwritten
     else:
@@ -195,7 +219,9 @@ def attr_keywords_in_unique_list(target):
     attributes.extend(keywords)
     #  now attributes == all attributes + keywords
 
-    return attributes
+    result = list(set(attributes))
+
+    return result
 
 
 def trivial_pwds(attributes, years, numbers, output_file):
@@ -315,11 +341,54 @@ def common_passwords(attributes, years, numbers, output_file):
             f.write(elem + "\n")
 
 
-def leet_pwds(attributes, output_file):
+def leet_pwds(leetall, output_file):
     """
     1337 passwords
+    if leetall ==> all possible combinations
+                    e.g. leet -> l3e7
+    else:
+            ==> switch all chars
+                    e.g. leet -> l337
     """
-    pass
+    pwds = []
+    with open(output_file, "r+") as f:
+        pwds = f.read().split()
+
+    with open(output_file, "a+") as f:
+
+        for elem in pwds:
+
+            continues = False
+            for key in leet_chars:
+                if key in elem:
+                    continues = True
+                    break
+                else:
+                    continues = False
+
+            if continues:
+                if leetall:
+
+                    possibles = []
+
+                    for lower in elem.lower():
+                        ll = leet_chars.get(lower, lower)
+                        possibles.append((lower,) if ll == lower else (lower, ll))
+
+                    leets = ["".join(t) for t in itertools.product(*possibles)]
+
+                    for leet in leets:
+                        f.write(leet + "\n")
+
+                else:
+
+                    # copy without passing reference
+                    leet = (elem + ".")[:-1]
+
+                    for char in leet_chars.keys():
+                        leet.replace(char, leet_chars[char])
+
+                    f.write(leet + "\n")
 
 
 # ----- Person -----
@@ -362,7 +431,7 @@ class Person:
         self.person_keywords = person_keywords
 
 
-def person(add_leet, years, numbers):
+def person(add_leet, years, leetall, numbers):
     print("Targeting a person.\n")
     target = input_person()
     default_output = False
@@ -390,8 +459,8 @@ def person(add_leet, years, numbers):
 
     permutations(attributes, years, numbers, output_file)
 
-    if add_leet:
-        leet_pwds(attributes, output_file)
+    if add_leet or leetall:
+        leet_pwds(leetall, output_file)
 
 
 def input_person():
@@ -441,7 +510,7 @@ class Corporate:
         self.corporate_keywords = corporate_keywords
 
 
-def corporate(add_leet, years, numbers):
+def corporate(add_leet, years, leetall, numbers):
     print("Targeting a corporate.\n")
     target = input_corporate()
     default_output = False
@@ -468,8 +537,8 @@ def corporate(add_leet, years, numbers):
 
     permutations(attributes, years, numbers, output_file)
 
-    if add_leet:
-        leet_pwds(attributes, output_file)
+    if add_leet or leetall:
+        leet_pwds(leetall, output_file)
 
 
 def input_corporate():
@@ -502,9 +571,9 @@ def main():
     if args.version:
         version()
     elif args.corporate:
-        corporate(args.leet, args.years, args.numbers)
+        corporate(args.leet, args.years, args.leetall, args.numbers)
     elif args.person:
-        person(args.leet, args.years, args.numbers)
+        person(args.leet, args.years, args.leetall, args.numbers)
     else:
         parser.print_help()
 
