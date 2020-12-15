@@ -148,14 +148,32 @@ def create_subsets(list_input, k):
     return subsets
 
 
-def trivial_pwds(target, file):
-    """
-    It writes the trivial pwds into output file
-    """
+def flush_None_values(list_input):
+    return [elem for elem in list_input if elem is not None]
+
+
+def attr_keywords_in_unique_list(target):
+
     attributes = vars(target)
     attributes = flush_None_values(attributes.values())
 
+    keywords = []
+    for elem in attributes:
+        if isinstance(elem, list):
+            keywords.extend(elem)
+
     attributes = [elem for elem in attributes if not isinstance(elem, list)]
+
+    attributes.extend(keywords)
+    #  now attributes == all attributes + keywords
+
+    return attributes
+
+
+def trivial_pwds(attributes, file):
+    """
+    It writes the trivial pwds into output file
+    """
 
     with open(file, "w+") as f:
         for elem in attributes:
@@ -167,8 +185,20 @@ def trivial_pwds(target, file):
                     f.write(elem + symbol + str(i) + "\n")
 
 
-def flush_None_values(list_input):
-    return [elem for elem in list_input if elem is not None]
+def combinations():
+    """
+    It writes the combinations between all the elements involved:
+    attributes, keywords, numbers, symbols
+    """
+    pass
+
+
+def common_passwords():
+    """
+    It writes the common customized passwords:
+    password, admin, 12345678 ...
+    """
+    pass
 
 
 # ----- Person -----
@@ -230,7 +260,10 @@ def person():
         output_file = "output/" + target.name + "-" + target.surname + ".txt"
 
     # real computation here
-    trivial_pwds(target, output_file)
+
+    attributes = attr_keywords_in_unique_list(target)
+
+    trivial_pwds(attributes, output_file)
 
 
 def input_person():
@@ -298,7 +331,10 @@ def corporate():
         output_file = "output/" + target.name + ".txt"
 
     # real computation here
-    trivial_pwds(target, output_file)
+
+    attributes = attr_keywords_in_unique_list(target)
+
+    trivial_pwds(attributes, output_file)
 
 
 def input_corporate():
