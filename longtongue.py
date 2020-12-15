@@ -63,9 +63,9 @@ def banner():
     print(r"|_|\___/|_| |_|\__, |\__\___/|_| |_|\__, |\__,_|\___|")
     print(r"               |___/                |___/    ")
     print("")
-    print("github.com/edoardottt/longtongue")
-    print("edoardottt ~ edoardoottavianelli.it")
-    print("GPLv3 License")
+    print(" + github.com/edoardottt/longtongue")
+    print(" + edoardottt ~ edoardoottavianelli.it")
+    print(" + GPLv3 License")
     print("------------------------")
 
 
@@ -149,7 +149,7 @@ def create_subsets(list_input, k):
 
 
 def flush_None_values(list_input):
-    return [elem for elem in list_input if elem is not None]
+    return [elem for elem in list_input if elem is not None and elem != ""]
 
 
 def attr_keywords_in_unique_list(target):
@@ -177,15 +177,49 @@ def trivial_pwds(attributes, file):
     """
 
     with open(file, "w+") as f:
+
         for elem in attributes:
             f.write(elem + "\n")
+
             for symbol in symbols:
-                f.write(symbol + elem + "\n")
-                f.write(elem + symbol + "\n")
+
+                if elem.lower() != elem.capitalize():
+                    f.write(symbol + elem.lower() + "\n")
+                    f.write(symbol + elem.upper() + "\n")
+                    f.write(symbol + elem.capitalize() + "\n")
+                    f.write(elem.lower() + symbol + "\n")
+                    f.write(elem.upper() + symbol + "\n")
+                    f.write(elem.capitalize() + symbol + "\n")
+                else:
+                    f.write(symbol + elem + "\n")
+                    f.write(elem + symbol + "\n")
+
                 # check length
                 if len(elem) > 2:
                     for i in range(starting_number, ending_number + 1):
+
+                        if elem.lower() != elem.capitalize():
+                            f.write(symbol + elem.lower() + str(i) + "\n")
+                            f.write(symbol + elem.upper() + str(i) + "\n")
+                            f.write(symbol + elem.capitalize() + str(i) + "\n")
+                            f.write(elem.lower() + symbol + str(i) + "\n")
+                            f.write(elem.upper() + symbol + str(i) + "\n")
+                            f.write(elem.capitalize() + symbol + str(i) + "\n")
+                        else:
+                            f.write(elem + symbol + str(i) + "\n")
+                            f.write(symbol + elem + str(i) + "\n")
+
+                for i in range(starting_year, ending_year + 1):
+                    if elem.lower() != elem.capitalize():
+                        f.write(symbol + elem.lower() + str(i) + "\n")
+                        f.write(symbol + elem.upper() + str(i) + "\n")
+                        f.write(symbol + elem.capitalize() + str(i) + "\n")
+                        f.write(elem.lower() + symbol + str(i) + "\n")
+                        f.write(elem.upper() + symbol + str(i) + "\n")
+                        f.write(elem.capitalize() + symbol + str(i) + "\n")
+                    else:
                         f.write(elem + symbol + str(i) + "\n")
+                        f.write(symbol + elem + str(i) + "\n")
 
 
 def combinations():
