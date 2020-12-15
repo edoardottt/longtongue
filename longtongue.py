@@ -106,16 +106,16 @@ def get_parser():
     )
     group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument(
-        "-p", "--person", action="store_true", help="Set the target to be a person."
+        "-p", "--person", action="store_true", help="Set the target to be a person"
     )
     group.add_argument(
         "-c",
         "--corporate",
         action="store_true",
-        help="Set the target to be a corporate.",
+        help="Set the target to be a corporate",
     )
     group.add_argument(
-        "-v", "--version", action="store_true", help="Show the version of this program."
+        "-v", "--version", action="store_true", help="Show the version of this program"
     )
 
     group_two = parser.add_mutually_exclusive_group(required=False)
@@ -123,27 +123,27 @@ def get_parser():
         "-l",
         "--leet",
         action="store_true",
-        help="Add also complete 1337(leet) passwords.",
+        help="Add also complete 1337(leet) passwords",
     )
     group_two.add_argument(
         "-L",
         "--leetall",
         action="store_true",
-        help="Add also ALL possible le37(leet) passwords.",
+        help="Add also ALL possible le37(leet) passwords",
     )
     group_three = parser.add_mutually_exclusive_group(required=False)
     group_three.add_argument(
         "-y",
         "--years",
         action="store_true",
-        help="Add also years at password. See years range inside longtongue.py.",
+        help="Add also years at password. See years range inside longtongue.py",
     )
     group_four = parser.add_mutually_exclusive_group(required=False)
     group_four.add_argument(
         "-n",
         "--numbers",
         action="store_true",
-        help="Add also numbers at password. See numbers range inside longtongue.py.",
+        help="Add also numbers at password. See numbers range inside longtongue.py",
     )
 
     return parser
