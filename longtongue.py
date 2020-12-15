@@ -172,7 +172,8 @@ def attr_keywords_in_unique_list(target):
 
 def trivial_pwds(attributes, file):
     """
-    It writes the trivial pwds into output file
+    It writes the trivial pwds into output file.
+    It doesn't write short pwds (length == 5 ).
     """
 
     with open(file, "w+") as f:
@@ -181,8 +182,10 @@ def trivial_pwds(attributes, file):
             for symbol in symbols:
                 f.write(symbol + elem + "\n")
                 f.write(elem + symbol + "\n")
-                for i in range(starting_number, ending_number + 1):
-                    f.write(elem + symbol + str(i) + "\n")
+                # check length
+                if len(elem) > 2:
+                    for i in range(starting_number, ending_number + 1):
+                        f.write(elem + symbol + str(i) + "\n")
 
 
 def combinations():
@@ -281,7 +284,7 @@ def input_person():
     target.age = input("Age: ")
     target.birth_day = input("Birth day: ")
     target.birth_month = input("Birth month: ")
-    target.birth_year = input("Birth year: ")
+    target.birth_year = input("Birth year(YYYY): ")
     target.email = input("Email: ")
     target.birth_place = input("Birth place: ")
     target.first_pet = input("First pet: ")
@@ -346,7 +349,7 @@ def input_corporate():
     )
     target.name = input("Name: ")
     target.web_domain = input("Web domain (without protocol): ")
-    target.birth_year = input("Birth year: ")
+    target.birth_year = input("Birth year (YYYY): ")
 
     corporate_keywords = input("Useful keywords (separated by comma): ")
     target.corporate_keywords = prepare_keywords(corporate_keywords)
