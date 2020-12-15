@@ -85,6 +85,7 @@ starting_number = 0
 ending_number = 99
 words_in_passphrase_max = 2  # HIGHLY recommended: don't edit this
 items_limit = 200000  # unused now
+min_pwd_length = 0  # unused now
 
 
 # ----- Initial swag -----
@@ -286,10 +287,12 @@ def trivial_pwds(attributes, years, numbers, output_file):
                             f.write(elem + symbol + str(year) + "\n")
 
 
-def permutations(attributes, years, numbers, output_file):
+def permutations_first_round(attributes, years, numbers, output_file):
     """
-    It writes the combinations between all the elements involved:
-    attributes, keywords, numbers, symbols
+    It writes the first round of combinations between the elements involved
+    - par1, par2
+    - par1, par2, number
+    - par1, par2, year
     """
     subsets = create_permutations_with_repetition(attributes, words_in_passphrase_max)
 
@@ -300,6 +303,28 @@ def permutations(attributes, years, numbers, output_file):
             par1, par2 = subset
 
             f.write(par1 + par2 + "\n")  # par1 par2
+
+            if numbers:
+                for number in range(starting_number, ending_number + 1):
+                    f.write(par1 + par2 + str(number) + "\n")  # par1 par2 number
+
+            if years:
+                for year in range(starting_year, ending_year + 1):
+                    f.write(par1 + par2 + str(year) + "\n")  # par1 par2 year
+
+    return subsets
+
+
+def permutations_second_round(subsets, years, numbers, output_file):
+    """
+    It writes the second round of combinations between the elements involved
+    - read the comments below
+    """
+    with open(output_file, "a+") as f:
+        for subset in subsets:
+
+            # ATTENTION - THIS WORKS WITH words_in_passphrase_max = 2 ONLY !
+            par1, par2 = subset
 
             for symbol in symbols:
                 f.write(par1 + symbol + par2 + "\n")  # par1 symbol par2
@@ -336,14 +361,6 @@ def permutations(attributes, years, numbers, output_file):
                                 par1 + symbol + par2 + symbol2 + str(year) + "\n"
                             )  # par1 symbol par2 symbol year
 
-            if numbers:
-                for number in range(starting_number, ending_number + 1):
-                    f.write(par1 + par2 + str(number) + "\n")  # par1 par2 number
-
-            if years:
-                for year in range(starting_year, ending_year + 1):
-                    f.write(par1 + par2 + str(year) + "\n")  # par1 par2 year
-
 
 def common_passwords(attributes, years, numbers, output_file):
     """
@@ -373,12 +390,10 @@ def leet_pwds(leetall, output_file):
         for elem in pwds:
 
             continues = False
-            for key in leet_chars:
+            for key in leet_chars.keys():
                 if key in elem:
                     continues = True
                     break
-                else:
-                    continues = False
 
             if continues:
                 if leetall:
@@ -400,7 +415,7 @@ def leet_pwds(leetall, output_file):
                     leet = (elem + ".")[:-1]
 
                     for char in leet_chars.keys():
-                        leet.replace(char, leet_chars[char])
+                        leet = leet.replace(char, leet_chars[char])
 
                     f.write(leet + "\n")
 
@@ -471,7 +486,9 @@ def person(add_leet, years, leetall, numbers):
 
     common_passwords(attributes, years, numbers, output_file)
 
-    permutations(attributes, years, numbers, output_file)
+    subsets = permutations_first_round(attributes, years, numbers, output_file)
+
+    permutations_second_round(subsets, years, numbers, output_file)
 
     if add_leet or leetall:
         leet_pwds(leetall, output_file)
@@ -549,7 +566,9 @@ def company(add_leet, years, leetall, numbers):
 
     common_passwords(attributes, years, numbers, output_file)
 
-    permutations(attributes, years, numbers, output_file)
+    subsets = permutations_first_round(attributes, years, numbers, output_file)
+
+    permutations_second_round(subsets, years, numbers, output_file)
 
     if add_leet or leetall:
         leet_pwds(leetall, output_file)
