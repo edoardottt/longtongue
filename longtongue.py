@@ -42,6 +42,18 @@ symbols = [
     "&",
     "$",
 ]
+common_pwds = [
+    "password",
+    "admin",
+    "123456",
+    "1234567890",
+    "qwerty",
+    "qwertyuiop",
+    "webadmin",
+    "1q2w3e4r5t",
+    "qwerty123",
+    "11111111",
+]
 directory = "output"
 starting_year = 1960
 ending_year = 2020
