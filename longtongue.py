@@ -349,7 +349,7 @@ class Person:
 
 
 def person(add_leet):
-    print("person\n")
+    print("Targeting a person.\n")
     target = input_person()
     default_output = False
 
@@ -426,7 +426,7 @@ class Corporate:
 
 
 def corporate(add_leet):
-    print("corporate\n")
+    print("Targeting a corporate.\n")
     target = input_corporate()
     default_output = False
 
