@@ -17,3 +17,5 @@ optional arguments:
   -y, --years      Add also years at password. See years range inside longtongue.py.
   -n, --numbers    Add also numbers at password. See numbers range inside longtongue.py.
   ```
+
+## [Examples](https://github.com/edoardottt/longtongue/wiki/Examples)
