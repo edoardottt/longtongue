@@ -43,7 +43,7 @@ symbols = [
     "$",
 ]
 directory = "output"
-starting_year = 1900
+starting_year = 1960
 ending_year = 2020
 starting_number = 0
 ending_number = 99
@@ -182,7 +182,9 @@ def trivial_pwds(attributes, file):
             f.write(elem + "\n")
 
             for symbol in symbols:
-
+                """
+                Symbol and attribute
+                """
                 if elem.lower() != elem.capitalize():
                     f.write(symbol + elem.lower() + "\n")
                     f.write(symbol + elem.upper() + "\n")
@@ -197,7 +199,9 @@ def trivial_pwds(attributes, file):
                 # check length
                 if len(elem) > 2:
                     for i in range(starting_number, ending_number + 1):
-
+                        """
+                        Symbol, attribute and number
+                        """
                         if elem.lower() != elem.capitalize():
                             f.write(symbol + elem.lower() + str(i) + "\n")
                             f.write(symbol + elem.upper() + str(i) + "\n")
@@ -210,6 +214,9 @@ def trivial_pwds(attributes, file):
                             f.write(symbol + elem + str(i) + "\n")
 
                 for i in range(starting_year, ending_year + 1):
+                    """
+                    Symbol, attribute and year
+                    """
                     if elem.lower() != elem.capitalize():
                         f.write(symbol + elem.lower() + str(i) + "\n")
                         f.write(symbol + elem.upper() + str(i) + "\n")
