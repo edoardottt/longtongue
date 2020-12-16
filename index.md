@@ -4,6 +4,17 @@
 
 ![python](https://raw.githubusercontent.com/edoardottt/black-hat-python3-code/master/images/python-version.svg)
 
+Installation
+----
+`git clone https://github.com/edoardottt/longtongue.git`
+
+`cd longtongue`
+
+`python3 longtongue.py`
+
+Usage
+----
+
 ```
 usage: longtongue.py [-h] [-p | -c | -v] [-l | -L] [-y] [-n]
 
