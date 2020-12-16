@@ -79,13 +79,13 @@ leet_chars:
     'z': '2',}
 """
 directory = "output"
-starting_year = 1990
-ending_year = 2020
-starting_number = 0
-ending_number = 99
-words_in_passphrase_max = 2  # HIGHLY recommended: don't edit this
+starting_year = 1985
+ending_year = 1999
+starting_number = 1
+ending_number = 20
+words_in_passphrase_max = 2  # HIGHLY recommended: _don't_ edit this
 items_limit = 200000  # unused now
-min_pwd_length = 5
+min_pwd_length = 6
 
 
 # ----- Initial swag -----
@@ -306,15 +306,39 @@ def permutations_first_round(attributes, years, numbers, output_file):
             par1, par2 = subset
 
             if len(par1) + len(par2) >= min_pwd_length:
-                f.write(par1 + par2 + "\n")  # par1 par2
+
+                if par1.lower() != par1.capitalize():
+                    f.write(par1.lower() + par2 + "\n")
+                    f.write(par1.upper() + par2 + "\n")
+                    f.write(par1.capitalize() + par2 + "\n")
+                else:
+                    f.write(par1 + par2 + "\n")  # par1 par2
 
             if numbers and len(par1) + len(par2) + 2 >= min_pwd_length:
-                for number in range(starting_number, ending_number + 1):
-                    f.write(par1 + par2 + str(number) + "\n")  # par1 par2 number
+
+                if par1.lower() != par1.capitalize():
+                    for number in range(starting_number, ending_number + 1):
+                        f.write(
+                            par1.lower() + par2 + str(number) + "\n"
+                        )  # par1 par2 number
+                        f.write(par1.upper() + par2 + str(number) + "\n")
+                        f.write(par1.capitalize() + par2 + str(number) + "\n")
+                else:
+                    for number in range(starting_number, ending_number + 1):
+                        f.write(par1 + par2 + str(number) + "\n")  # par1 par2 number
 
             if years and len(par1) + len(par2) + 4 >= min_pwd_length:
-                for year in range(starting_year, ending_year + 1):
-                    f.write(par1 + par2 + str(year) + "\n")  # par1 par2 year
+
+                if par1.lower() != par1.capitalize():
+                    for year in range(starting_year, ending_year + 1):
+                        f.write(
+                            par1.lower() + par2 + str(year) + "\n"
+                        )  # par1 par2 year
+                        f.write(par1.upper() + par2 + str(year) + "\n")
+                        f.write(par1.capitalize() + par2 + str(year) + "\n")
+                else:
+                    for year in range(starting_year, ending_year + 1):
+                        f.write(par1 + par2 + str(year) + "\n")  # par1 par2 year
 
     return subsets
 
@@ -333,43 +357,159 @@ def permutations_second_round(subsets, years, numbers, output_file):
             for symbol in symbols:
 
                 if len(par1) + len(par2) + 1 >= min_pwd_length:
-                    f.write(par1 + symbol + par2 + "\n")  # par1 symbol par2
+
+                    if par1.lower() != par1.capitalize():
+                        f.write(par1.lower() + symbol + par2 + "\n")  # par1 symbol par2
+                        f.write(par1.upper() + symbol + par2 + "\n")
+                        f.write(par1.capitalize() + symbol + par2 + "\n")
+                    else:
+                        f.write(par1 + symbol + par2 + "\n")  # par1 symbol par2
 
                 if numbers and len(par1) + len(par2) + 3 >= min_pwd_length:
 
-                    for number in range(starting_number, ending_number + 1):
-                        f.write(
-                            par1 + symbol + par2 + str(number) + "\n"
-                        )  # par1 symbol par2 number
-                        f.write(
-                            par1 + par2 + symbol + str(number) + "\n"
-                        )  # par1 par2 symbol number
+                    if par1.lower() != par1.capitalize():
+                        for number in range(starting_number, ending_number + 1):
+                            f.write(
+                                par1.lower() + symbol + par2 + str(number) + "\n"
+                            )  # par1 symbol par2 number
+                            f.write(
+                                par1.lower() + par2 + symbol + str(number) + "\n"
+                            )  # par1 par2 symbol number
+                            f.write(
+                                par1.upper() + symbol + par2 + str(number) + "\n"
+                            )  # par1 symbol par2 number
+                            f.write(
+                                par1.upper() + par2 + symbol + str(number) + "\n"
+                            )  # par1 par2 symbol number
+                            f.write(
+                                par1.capitalize() + symbol + par2 + str(number) + "\n"
+                            )  # par1 symbol par2 number
+                            f.write(
+                                par1.capitalize() + par2 + symbol + str(number) + "\n"
+                            )  # par1 par2 symbol number
+                    else:
+                        for number in range(starting_number, ending_number + 1):
+                            f.write(
+                                par1 + symbol + par2 + str(number) + "\n"
+                            )  # par1 symbol par2 number
+                            f.write(
+                                par1 + par2 + symbol + str(number) + "\n"
+                            )  # par1 par2 symbol number
 
                 if years and len(par1) + len(par2) + 5 >= min_pwd_length:
 
-                    for year in range(starting_year, ending_year + 1):
-                        f.write(
-                            par1 + symbol + par2 + str(year) + "\n"
-                        )  # par1 symbol par2 year
-                        f.write(
-                            par1 + par2 + symbol + str(year) + "\n"
-                        )  # par1 par2 symbol year
+                    if par1.lower() != par1.capitalize():
+                        for year in range(starting_year, ending_year + 1):
+                            f.write(
+                                par1.lower() + symbol + par2 + str(year) + "\n"
+                            )  # par1 symbol par2 year
+                            f.write(
+                                par1.lower() + par2 + symbol + str(year) + "\n"
+                            )  # par1 par2 symbol year
+                            f.write(
+                                par1.upper() + symbol + par2 + str(year) + "\n"
+                            )  # par1 symbol par2 year
+                            f.write(
+                                par1.upper() + par2 + symbol + str(year) + "\n"
+                            )  # par1 par2 symbol year
+                            f.write(
+                                par1.capitalize() + symbol + par2 + str(year) + "\n"
+                            )  # par1 symbol par2 year
+                            f.write(
+                                par1.capitalize() + par2 + symbol + str(year) + "\n"
+                            )  # par1 par2 symbol year
+                    else:
+                        for year in range(starting_year, ending_year + 1):
+                            f.write(
+                                par1 + symbol + par2 + str(year) + "\n"
+                            )  # par1 symbol par2 year
+                            f.write(
+                                par1 + par2 + symbol + str(year) + "\n"
+                            )  # par1 par2 symbol year
+
+
+def permutations_third_round(subsets, years, numbers, output_file):
+    """
+    It writes the second round of combinations between the elements involved
+    - read the comments below
+    """
+    with open(output_file, "a+") as f:
+        for subset in subsets:
+
+            # ATTENTION - THIS WORKS WITH words_in_passphrase_max = 2 ONLY !
+            par1, par2 = subset
+
+            for symbol in symbols:
 
                 for symbol2 in symbols:
 
                     if numbers and len(par1) + len(par2) + 4 >= min_pwd_length:
 
-                        for number in range(starting_number, starting_number + 1):
-                            f.write(
-                                par1 + symbol + par2 + symbol2 + str(number) + "\n"
-                            )  # par1 symbol par2 symbol number
+                        if par1.lower() != par1.capitalize():
+                            for number in range(starting_number, starting_number + 1):
+                                f.write(
+                                    par1.lower()
+                                    + symbol
+                                    + par2
+                                    + symbol2
+                                    + str(number)
+                                    + "\n"
+                                )  # par1 symbol par2 symbol number
+                                f.write(
+                                    par1.upper()
+                                    + symbol
+                                    + par2
+                                    + symbol2
+                                    + str(number)
+                                    + "\n"
+                                )  # par1 symbol par2 symbol number
+                                f.write(
+                                    par1.capitalize()
+                                    + symbol
+                                    + par2
+                                    + symbol2
+                                    + str(number)
+                                    + "\n"
+                                )  # par1 symbol par2 symbol number
+                        else:
+                            for number in range(starting_number, starting_number + 1):
+                                f.write(
+                                    par1 + symbol + par2 + symbol2 + str(number) + "\n"
+                                )  # par1 symbol par2 symbol number
 
                     if years and len(par1) + len(par2) + 6 >= min_pwd_length:
 
-                        for year in range(starting_year, ending_year + 1):
-                            f.write(
-                                par1 + symbol + par2 + symbol2 + str(year) + "\n"
-                            )  # par1 symbol par2 symbol year
+                        if par1.lower() != par1.capitalize():
+                            for year in range(starting_year, ending_year + 1):
+                                f.write(
+                                    par1.lower()
+                                    + symbol
+                                    + par2
+                                    + symbol2
+                                    + str(year)
+                                    + "\n"
+                                )  # par1 symbol par2 symbol year
+                                f.write(
+                                    par1.upper()
+                                    + symbol
+                                    + par2
+                                    + symbol2
+                                    + str(year)
+                                    + "\n"
+                                )  # par1 symbol par2 symbol year
+                                f.write(
+                                    par1.capitalize()
+                                    + symbol
+                                    + par2
+                                    + symbol2
+                                    + str(year)
+                                    + "\n"
+                                )  # par1 symbol par2 symbol year
+                        else:
+                            for year in range(starting_year, ending_year + 1):
+                                f.write(
+                                    par1 + symbol + par2 + symbol2 + str(year) + "\n"
+                                )  # par1 symbol par2 symbol year
 
 
 def common_passwords(attributes, years, numbers, output_file):
@@ -501,6 +641,8 @@ def person(add_leet, years, leetall, numbers):
 
     permutations_second_round(subsets, years, numbers, output_file)
 
+    permutations_third_round(subsets, years, numbers, output_file)
+
     if add_leet or leetall:
         leet_pwds(leetall, output_file)
 
@@ -580,6 +722,8 @@ def company(add_leet, years, leetall, numbers):
     subsets = permutations_first_round(attributes, years, numbers, output_file)
 
     permutations_second_round(subsets, years, numbers, output_file)
+
+    permutations_third_round(subsets, years, numbers, output_file)
 
     if add_leet or leetall:
         leet_pwds(leetall, output_file)
