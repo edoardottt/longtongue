@@ -1,8 +1,20 @@
 # longtongue
 
-### Customized Password/Passphrase List inputting Target Info
-
-![python](https://github.com/edoardottt/images/blob/main/black-hat-python-code/python-version.svg)
+<p align="center">
+  <img src="https://github.com/edoardottt/images/blob/main/longtongue/logo.png"><br>
+  <b>Customized Password/Passphrase List inputting Target Info</b><br>
+  <br>
+  <!-- go-report-card -->
+  <img src="https://github.com/edoardottt/images/blob/main/black-hat-python-code/python-version.svg" alt="py-version" />
+  <br>
+  <sub>
+    Coded with 💙 by edoardottt.
+  </sub>
+  <br>
+  <!--Tweet button-->
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fedoardottt%2Flongtongue%20&text=Customized%20Password/Passphrase%20List%20inputting%20Target%20Info%20%21&hashtags=pentesting%2Clinux%2Cpython%2Cnetwork%2Cpassword" target="_blank">Share on Twitter!
+  </a>
+</p>
 
 Installation
 ----
