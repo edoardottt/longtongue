@@ -6,11 +6,12 @@
 
 Installation
 ----
-`git clone https://github.com/edoardottt/longtongue.git`
 
-`cd longtongue`
+- `git clone https://github.com/edoardottt/longtongue.git`
 
-`python3 longtongue.py`
+- `cd longtongue`
+
+- `python3 longtongue.py`
 
 Usage
 ----
