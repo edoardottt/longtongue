@@ -1,10 +1,7 @@
-# longtongue
-
 <p align="center">
   <img src="https://github.com/edoardottt/images/blob/main/longtongue/logo.png"><br>
   <b>Customized Password/Passphrase List inputting Target Info</b><br>
   <br>
-  <!-- go-report-card -->
   <img src="https://github.com/edoardottt/images/blob/main/black-hat-python-code/python-version.svg" alt="py-version" />
   <br>
   <sub>
