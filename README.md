@@ -42,3 +42,9 @@ optional arguments:
   ```
 
 [Examples](https://github.com/edoardottt/longtongue/wiki/Examples)
+
+License 📝
+-------
+
+This repository is under [GNU General Public License v3.0](https://github.com/edoardottt/longtongue/blob/main/LICENSE).  
+[edoardoottavianelli.it](https://www.edoardoottavianelli.it) for contact me.
