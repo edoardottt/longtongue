@@ -41,7 +41,28 @@ optional arguments:
   -n, --numbers  Add also numbers at password. See numbers range inside longtongue.py
   ```
 
-[Examples](https://github.com/edoardottt/longtongue/wiki/Examples)
+Examples
+-------
+
+- `python longtongue.py -v`
+
+- `python longtongue.py -h`
+
+- `python longtongue.py -p`
+
+- `python longtongue.py -pl`
+
+- `python longtongue.py -pln`
+
+- `python longtongue.py -plny`
+
+- `python longtongue.py -c`
+
+- `python longtongue.py -cl`
+
+- `python longtongue.py -cln`
+
+- `python longtongue.py -clny`
 
 License 📝
 -------
