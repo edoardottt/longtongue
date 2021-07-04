@@ -17,9 +17,8 @@ Installation
 ----
 
 - `git clone https://github.com/edoardottt/longtongue.git`
-
 - `cd longtongue`
-
+- `pip install -r requirements.txt`
 - `python3 longtongue.py`
 
 Usage
