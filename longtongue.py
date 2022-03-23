@@ -36,6 +36,7 @@
 import argparse
 import os
 import itertools
+import sys
 
 # ----- Global variables -----
 
@@ -85,7 +86,7 @@ starting_number = 1
 ending_number = 20
 words_in_passphrase_max = 2  # HIGHLY recommended: _don't_ edit this
 items_limit = 200000  # unused now
-min_pwd_length = 6
+min_pwd_length = 0
 
 
 # ----- Initial swag -----
@@ -159,6 +160,13 @@ def get_parser():
         "--numbers",
         action="store_true",
         help="Add also numbers at password. See numbers range inside longtongue.py",
+    )
+    group_five = parser.add_mutually_exclusive_group(required=False)
+    group_five.add_argument(
+        "-m",
+        "--minlength",
+        type=str,
+        help="Set the minimum length for passwords (default 0).",
     )
 
     return parser
@@ -758,7 +766,17 @@ def main():
 
     if args.version:
         version()
-    elif args.company:
+    if args.minlength:
+        global min_pwd_length
+        try:
+            min_pwd_length = int(args.minlength)
+        except Exception:
+            print("-m requires an integer greater than 0.")
+            sys.exit(1)
+        if min_pwd_length <= 0:
+            print("-m requires an integer greater than 0.")
+            sys.exit(1)
+    if args.company:
         company(args.leet, args.years, args.leetall, args.numbers)
     elif args.person:
         person(args.leet, args.years, args.leetall, args.numbers)
