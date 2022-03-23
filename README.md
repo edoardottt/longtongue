@@ -65,6 +65,10 @@ Examples
 
 - `python longtongue.py -clny`
 
+- `python longtongue.py -c -m 10`
+
+- `python longtongue.py -p -m 10`
+
 License 📝
 -------
 
