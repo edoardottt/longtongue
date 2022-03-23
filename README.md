@@ -25,20 +25,22 @@ Usage
 ----
 
 ```
-usage: longtongue.py [-h] [-p | -c | -v] [-l | -L] [-y] [-n]
+usage: longtongue.py [-h] [-p | -c | -v] [-l | -L] [-y] [-n] [-m MINLENGTH]
 
 Customized Password/Passphrase List inputting Target Info
 
 optional arguments:
-  -h, --help     show this help message and exit
-  -p, --person   Set the target to be a person
-  -c, --company  Set the target to be a company
-  -v, --version  Show the version of this program
-  -l, --leet     Add also complete 1337(leet) passwords
-  -L, --leetall  Add also ALL possible le37(leet) passwords
-  -y, --years    Add also years at password. See years range inside longtongue.py
-  -n, --numbers  Add also numbers at password. See numbers range inside longtongue.py
-  ```
+  -h, --help            show this help message and exit
+  -p, --person          Set the target to be a person
+  -c, --company         Set the target to be a company
+  -v, --version         Show the version of this program
+  -l, --leet            Add also complete 1337(leet) passwords
+  -L, --leetall         Add also ALL possible le37(leet) passwords
+  -y, --years           Add also years at password. See years range inside longtongue.py
+  -n, --numbers         Add also numbers at password. See numbers range inside longtongue.py
+  -m MINLENGTH, --minlength MINLENGTH
+                        Set the minimum length for passwords (default 0).
+```
 
 Examples
 -------
