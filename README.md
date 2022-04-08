@@ -13,7 +13,7 @@
   </a>
 </p>
 
-Installation
+Installation ⬇️
 ----
 
 - `git clone https://github.com/edoardottt/longtongue.git`
@@ -21,7 +21,7 @@ Installation
 - `pip install -r requirements.txt`
 - `python3 longtongue.py`
 
-Usage
+Usage 💻
 ----
 
 ```
@@ -42,7 +42,7 @@ optional arguments:
                         Set the minimum length for passwords (default 0).
 ```
 
-Examples
+Examples 📖
 -------
 
 - `python longtongue.py -v`
