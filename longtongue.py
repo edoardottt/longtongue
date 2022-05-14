@@ -54,14 +54,8 @@ common_pwds = [
 leet_chars = {letter: str(index) for index, letter in enumerate("oizeasgtb")}
 """
 leet_chars:
-{   'a': '4',
-    'b': '8',
-    'e': '3',
-    'g': '6',
-    'i': '1',
-    'o': '0',
-    's': '5',
-    't': '7',
+{   'a': '4','b': '8','e': '3','g': '6',
+    'i': '1','o': '0','s': '5','t': '7',
     'z': '2',}
 """
 directory = "output"
