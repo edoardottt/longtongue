@@ -69,6 +69,10 @@ Examples 📖
 
 - `python longtongue.py -p -m 10`
 
+Contributing 🤝
+------
+If you want to contribute to this project, you can start opening an [issue](https://github.com/edoardottt/longtongue/issues).
+
 License 📝
 -------
 
