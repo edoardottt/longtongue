@@ -75,7 +75,7 @@ Detailed changes for each release are documented in the [release notes](https://
 
 Contributing 🤝
 ------
-If you want to contribute to this project, you can start opening an [issue](https://github.com/edoardottt/longtongue/issues).
+If you want to contribute to this project, open an [issue](https://github.com/edoardottt/longtongue/issues) or a [pull request](https://github.com/edoardottt/longtongue/pulls).
 
 License 📝
 -------
