@@ -9,7 +9,7 @@
   </sub>
   <br>
   <!--Tweet button-->
-  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fedoardottt%2Flongtongue%20&text=Customized%20Password/Passphrase%20List%20inputting%20Target%20Info%20%21&hashtags=pentesting%2Clinux%2Cpython%2Cnetwork%2Cpassword" target="_blank">Share on Twitter!
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fedoardottt%2Flongtongue%20&text=Customized%20Password/Passphrase%20List%20inputting%20Target%20Info%20%21&hashtags=pentesting%2Clinux%2Cpython%2Cnetwork%2Cpassword%2Cbugbounty%2Cinfosec" target="_blank">Share on Twitter!
   </a>
 </p>
 
