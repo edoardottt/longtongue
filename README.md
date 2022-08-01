@@ -5,7 +5,7 @@
   <img src="https://github.com/edoardottt/images/blob/main/black-hat-python-code/python-version.svg" alt="py-version" />
   <br>
   <sub>
-    Coded with 💙 by edoardottt.
+    Coded with 💙 by edoardottt
   </sub>
   <br>
   <!--Tweet button-->
