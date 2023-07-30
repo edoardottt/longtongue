@@ -71,10 +71,12 @@ Examples 📖
 
 Changelog 📌
 -------
+
 Detailed changes for each release are documented in the [release notes](https://github.com/edoardottt/longtongue/releases).
 
 Contributing 🤝
 ------
+
 If you want to contribute to this project, open an [issue](https://github.com/edoardottt/longtongue/issues) or a [pull request](https://github.com/edoardottt/longtongue/pulls).
 
 License 📝
