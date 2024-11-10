@@ -7,7 +7,7 @@
 
 [Author]
     Edoardo Ottavianelli  edoardottt
-        - edoardoottavianelli.it
+        - edoardottt.com
         - github.com/edoardottt
 
 [License]
@@ -77,7 +77,7 @@ def banner():
     print(r"               |___/                |___/    ")
     print("")
     print(" + github.com/edoardottt/longtongue")
-    print(" + edoardottt ~ edoardoottavianelli.it")
+    print(" + edoardottt ~ edoardottt.com")
     print(" + GPLv3 License")
     print("------------------------")
 
