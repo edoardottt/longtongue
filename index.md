@@ -1,35 +1,35 @@
 <p align="center">
   <img src="https://github.com/edoardottt/images/blob/main/longtongue/logo.png"><br>
-  <b>Customized Password/Passphrase List inputting Target Info</b><br>
-  <br>
-  <img src="https://github.com/edoardottt/images/blob/main/black-hat-python-code/python-version.svg" alt="py-version" />
+  <b>Generate customized Password/Passphrase wordlist based on target information</b>
   <br>
   <sub>
-    Coded with 💙 by edoardottt.
+    Coded with 💙 by edoardottt
   </sub>
   <br>
   <!--Tweet button-->
-  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fedoardottt%2Flongtongue%20&text=Customized%20Password/Passphrase%20List%20inputting%20Target%20Info%20%21&hashtags=pentesting%2Clinux%2Cpython%2Cnetwork%2Cpassword" target="_blank">Share on Twitter!
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fedoardottt%2Flongtongue%20&text=longtongue%20-%20Customized%20Password/Passphrase%20List%20inputting%20Target%20Info%20%21&hashtags=pentesting%2Clinux%2Cpython%2Cnetwork%2Cpassword%2Cbugbounty%2Cinfosec" target="_blank">Share on Twitter!
   </a>
 </p>
 
 Installation ⬇️
 ----
 
-- `git clone https://github.com/edoardottt/longtongue.git`
-- `cd longtongue`
-- `pip install -r requirements.txt`
-- `python3 longtongue.py`
+```console
+git clone https://github.com/edoardottt/longtongue.git
+cd longtongue
+pip install -r requirements.txt
+python3 longtongue.py
+```
 
 Usage 💻
 ----
 
-```
-usage: longtongue.py [-h] [-p | -c | -v] [-l | -L] [-y] [-n] [-m MINLENGTH]
+```console
+usage: longtongue.py [-h] (-p | -c | -v) [-l | -L] [-y] [-n] [-m MINLENGTH] [-P COMMON_PASSWORD_LIST]
 
-Customized Password/Passphrase List inputting Target Info
+Generate customized Password/Passphrase wordlist based on target information
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -p, --person          Set the target to be a person
   -c, --company         Set the target to be a company
@@ -38,8 +38,10 @@ optional arguments:
   -L, --leetall         Add also ALL possible le37(leet) passwords
   -y, --years           Add also years at password. See years range inside longtongue.py
   -n, --numbers         Add also numbers at password. See numbers range inside longtongue.py
-  -m MINLENGTH, --minlength MINLENGTH
+  -m, --minlength MINLENGTH
                         Set the minimum length for passwords (default 0).
+  -P, --common-password-list COMMON_PASSWORD_LIST
+                        Set the file which contains common passwords (default included in the source).
 ```
 
 Examples 📖
@@ -69,13 +71,19 @@ Examples 📖
 
 - `python longtongue.py -p -m 10`
 
+- `python longtongue.py -c -P ./common-passwords.txt`
+
+- `python longtongue.py -p -P ./common-passwords.txt`
+
 Changelog 📌
 -------
+
 Detailed changes for each release are documented in the [release notes](https://github.com/edoardottt/longtongue/releases).
 
 Contributing 🤝
 ------
-If you want to contribute to this project, you can start opening an [issue](https://github.com/edoardottt/longtongue/issues).
+
+If you want to contribute to this project, open an [issue](https://github.com/edoardottt/longtongue/issues) or a [pull request](https://github.com/edoardottt/longtongue/pulls).
 
 License 📝
 -------
