@@ -2,13 +2,13 @@
 
 """
 ###### longtongue ######
-  Customized Password/Passphrase List inputting Target Info
+  Generate customized Password/Passphrase wordlist based on target information
   https://github.com/edoardottt/longtongue
 
 [Author]
     Edoardo Ottavianelli  edoardottt
-        - edoardottt.com
-        - github.com/edoardottt
+        - https://edoardottt.com
+        - https://github.com/edoardottt
 
 [License]
     This program is free software: you can redistribute it and/or modify
@@ -43,10 +43,18 @@ common_pwds = [
     "qwerty",
     "qwertyuiop",
     "webadmin",
-    "1q2w3e4r5t",
     "qwerty123",
-    "11111111",
+    "guest",
+    "operator",
+    "user",
+    "manager",
+    "webmaster",
+    "master",
+    "administrator",
+    "backup",
+    "changeme",
 ]
+
 leet_chars = {letter: str(index) for index, letter in enumerate("oizeasgtb")}
 """
 leet_chars:
@@ -54,11 +62,12 @@ leet_chars:
     'i': '1','o': '0','s': '5','t': '7',
     'z': '2',}
 """
+
 directory = "output"
-starting_year = 1985
-ending_year = 1999
+starting_year = 1970
+ending_year = 2026
 starting_number = 1
-ending_number = 20
+ending_number = 99
 words_in_passphrase_max = 2  # HIGHLY recommended: _don't_ edit this
 items_limit = 200000  # unused now
 min_pwd_length = 0
@@ -76,14 +85,14 @@ def banner():
     print(r"|_|\___/|_| |_|\__, |\__\___/|_| |_|\__, |\__,_|\___|")
     print(r"               |___/                |___/    ")
     print("")
-    print(" + github.com/edoardottt/longtongue")
-    print(" + edoardottt ~ edoardottt.com")
+    print(" + https://github.com/edoardottt/longtongue")
+    print(" + edoardottt ~ https://edoardottt.com")
     print(" + GPLv3 License")
     print("------------------------")
 
 
 def version():
-    print("0.1\n")
+    print("v1.1\n")
 
 
 # ----- Input -----
@@ -93,12 +102,15 @@ def get_parser():
     """Create and return a parser (argparse.ArgumentParser instance) for main()
     to use"""
     parser = argparse.ArgumentParser(
-        description="Customized Password/Passphrase List inputting Target Info"
+        description="Generate customized Password/Passphrase wordlist based on target information"
     )
-    group = parser.add_mutually_exclusive_group(required=False)
+
+    group = parser.add_mutually_exclusive_group(required=True)
+
     group.add_argument(
         "-p", "--person", action="store_true", help="Set the target to be a person"
     )
+
     group.add_argument(
         "-c",
         "--company",
@@ -110,38 +122,47 @@ def get_parser():
     )
 
     group_two = parser.add_mutually_exclusive_group(required=False)
+
     group_two.add_argument(
         "-l",
         "--leet",
         action="store_true",
         help="Add also complete 1337(leet) passwords",
     )
+
     group_two.add_argument(
         "-L",
         "--leetall",
         action="store_true",
         help="Add also ALL possible le37(leet) passwords",
     )
-    group_three = parser.add_mutually_exclusive_group(required=False)
-    group_three.add_argument(
+
+    parser.add_argument(
         "-y",
         "--years",
         action="store_true",
         help="Add also years at password. See years range inside longtongue.py",
     )
-    group_four = parser.add_mutually_exclusive_group(required=False)
-    group_four.add_argument(
+
+    parser.add_argument(
         "-n",
         "--numbers",
         action="store_true",
         help="Add also numbers at password. See numbers range inside longtongue.py",
     )
-    group_five = parser.add_mutually_exclusive_group(required=False)
-    group_five.add_argument(
+
+    parser.add_argument(
         "-m",
         "--minlength",
         type=str,
         help="Set the minimum length for passwords (default 0).",
+    )
+
+    parser.add_argument(
+        "-P",
+        "--common-password-list",
+        type=str,
+        help="Set the file which contains common passwords (default included in the source).",
     )
 
     return parser
@@ -170,7 +191,7 @@ def create_output_file(input_filename):
             exit(1)
         # if choice == y: ====> go forward. The file's content will be flushed and overwritten
     else:
-        os.mknod(filename)
+        open(filename, "a").close()
 
 
 def prepare_keywords(str_input):
@@ -723,7 +744,7 @@ def input_company():
     target.web_domain = input("[>] Web domain (without protocol): ")
     target.birth_year = input("[>] Birth year (YYYY): ")
 
-    company_keywords = input("[>] Useful keywords (separated by comma): ")
+    company_keywords = input("[>] Useful keywords (comma separated): ")
     target.company_keywords = prepare_keywords(company_keywords)
 
     return target
@@ -750,6 +771,14 @@ def main():
             sys.exit(1)
         if min_pwd_length <= 0:
             print("-m requires an integer greater than 0.")
+            sys.exit(1)
+    if args.common_password_list:
+        global common_pwds
+        try:
+            with open(args.common_password_list, "r") as f:
+                common_pwds = f.read().split()
+        except Exception:
+            print("The input file for common passwords doesn't exist.")
             sys.exit(1)
     if args.company:
         company(args.leet, args.years, args.leetall, args.numbers)

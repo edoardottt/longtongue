@@ -1,8 +1,6 @@
 <p align="center">
   <img src="https://github.com/edoardottt/images/blob/main/longtongue/logo.png"><br>
-  <b>Customized Password/Passphrase List inputting Target Info</b><br>
-  <br>
-  <img src="https://github.com/edoardottt/images/blob/main/black-hat-python-code/python-version.svg" alt="py-version" />
+  <b>Generate customized Password/Passphrase wordlist based on target information</b>
   <br>
   <sub>
     Coded with 💙 by edoardottt
@@ -16,20 +14,22 @@
 Installation ⬇️
 ----
 
-- `git clone https://github.com/edoardottt/longtongue.git`
-- `cd longtongue`
-- `pip install -r requirements.txt`
-- `python3 longtongue.py`
+```console
+git clone https://github.com/edoardottt/longtongue.git
+cd longtongue
+pip install -r requirements.txt
+python3 longtongue.py
+```
 
 Usage 💻
 ----
 
-```
-usage: longtongue.py [-h] [-p | -c | -v] [-l | -L] [-y] [-n] [-m MINLENGTH]
+```console
+usage: longtongue.py [-h] (-p | -c | -v) [-l | -L] [-y] [-n] [-m MINLENGTH] [-P COMMON_PASSWORD_LIST]
 
-Customized Password/Passphrase List inputting Target Info
+Generate customized Password/Passphrase wordlist based on target information
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -p, --person          Set the target to be a person
   -c, --company         Set the target to be a company
@@ -38,8 +38,10 @@ optional arguments:
   -L, --leetall         Add also ALL possible le37(leet) passwords
   -y, --years           Add also years at password. See years range inside longtongue.py
   -n, --numbers         Add also numbers at password. See numbers range inside longtongue.py
-  -m MINLENGTH, --minlength MINLENGTH
+  -m, --minlength MINLENGTH
                         Set the minimum length for passwords (default 0).
+  -P, --common-password-list COMMON_PASSWORD_LIST
+                        Set the file which contains common passwords (default included in the source).
 ```
 
 Examples 📖
@@ -68,6 +70,10 @@ Examples 📖
 - `python longtongue.py -c -m 10`
 
 - `python longtongue.py -p -m 10`
+
+- `python longtongue.py -c -P ./common-passwords.txt`
+
+- `python longtongue.py -p -P ./common-passwords.txt`
 
 Changelog 📌
 -------
