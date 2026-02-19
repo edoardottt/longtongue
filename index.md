@@ -14,6 +14,14 @@
 Installation ⬇️
 ----
 
+### pipx
+
+```bash
+pipx install longtongue
+```
+
+### Source
+
 ```console
 git clone https://github.com/edoardottt/longtongue.git
 cd longtongue
