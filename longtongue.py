@@ -108,14 +108,14 @@ def get_parser():
     group = parser.add_mutually_exclusive_group(required=True)
 
     group.add_argument(
-        "-p", "--person", action="store_true", help="Set the target to be a person"
+        "-p", "--person", action="store_true", help="The target is a person"
     )
 
     group.add_argument(
         "-c",
         "--company",
         action="store_true",
-        help="Set the target to be a company",
+        help="The target is a company",
     )
     group.add_argument(
         "-v", "--version", action="store_true", help="Show the version of this program"
@@ -141,14 +141,14 @@ def get_parser():
         "-y",
         "--years",
         action="store_true",
-        help="Add also years at password. See years range inside longtongue.py",
+        help="Add also years to password. See years range inside longtongue.py",
     )
 
     parser.add_argument(
         "-n",
         "--numbers",
         action="store_true",
-        help="Add also numbers at password. See numbers range inside longtongue.py",
+        help="Add also numbers to password. See numbers range inside longtongue.py",
     )
 
     parser.add_argument(

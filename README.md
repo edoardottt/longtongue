@@ -31,13 +31,13 @@ Generate customized Password/Passphrase wordlist based on target information
 
 options:
   -h, --help            show this help message and exit
-  -p, --person          Set the target to be a person
-  -c, --company         Set the target to be a company
+  -p, --person          The target is a person
+  -c, --company         The target is a company
   -v, --version         Show the version of this program
   -l, --leet            Add also complete 1337(leet) passwords
   -L, --leetall         Add also ALL possible le37(leet) passwords
-  -y, --years           Add also years at password. See years range inside longtongue.py
-  -n, --numbers         Add also numbers at password. See numbers range inside longtongue.py
+  -y, --years           Add also years to password. See years range inside longtongue.py
+  -n, --numbers         Add also numbers to password. See numbers range inside longtongue.py
   -m, --minlength MINLENGTH
                         Set the minimum length for passwords (default 0).
   -P, --common-password-list COMMON_PASSWORD_LIST
