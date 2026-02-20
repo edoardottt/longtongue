@@ -81,6 +81,10 @@ Examples 📖
 
 - `python longtongue.py -p -m 10`
 
+- `python longtongue.py -c -M 18`
+
+- `python longtongue.py -p -M 18`
+
 - `python longtongue.py -c -P ./common-passwords.txt`
 
 - `python longtongue.py -p -P ./common-passwords.txt`
