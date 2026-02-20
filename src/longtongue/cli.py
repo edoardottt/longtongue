@@ -71,6 +71,7 @@ ending_number = 99
 words_in_passphrase_max = 2  # HIGHLY recommended: _don't_ edit this
 items_limit = 200000  # unused now
 min_pwd_length = 0
+max_pwd_length = 0
 
 
 # ----- Initial swag -----
@@ -92,7 +93,7 @@ def banner():
 
 
 def version():
-    print("v1.2.0\n")
+    print("v1.2.1\n")
 
 
 # ----- Input -----
@@ -154,8 +155,15 @@ def get_parser():
     parser.add_argument(
         "-m",
         "--minlength",
-        type=str,
+        type=int,
         help="Set the minimum length for passwords (default 0).",
+    )
+
+    parser.add_argument(
+        "-M",
+        "--maxlength",
+        type=int,
+        help="Set the maximun length for passwords (default 100).",
     )
 
     parser.add_argument(
@@ -252,12 +260,12 @@ def trivial_pwds(attributes, years, numbers, output_file):
     with open(output_file, "w+") as f:
 
         for elem in attributes:
-            if len(elem) >= min_pwd_length:
+            if len(elem) >= min_pwd_length and len(elem) <= max_pwd_length:
                 f.write(elem + "\n")
 
             for symbol in symbols:
 
-                if len(elem) + 1 >= min_pwd_length:
+                if len(elem) + 1 >= min_pwd_length and len(elem) + 1 <= max_pwd_length:
                     """
                     Symbol and attribute
                     """
@@ -269,7 +277,7 @@ def trivial_pwds(attributes, years, numbers, output_file):
                         f.write(elem + symbol + "\n")
 
                 # check length
-                if numbers and len(elem) + 3 >= min_pwd_length:
+                if numbers and len(elem) + 3 >= min_pwd_length and len(elem) + 3 <= max_pwd_length:
                     for number in range(starting_number, ending_number + 1):
                         """
                         Symbol, attribute and number
@@ -281,7 +289,7 @@ def trivial_pwds(attributes, years, numbers, output_file):
                         else:
                             f.write(elem + symbol + str(number) + "\n")
 
-                if years and len(elem) + 5 >= min_pwd_length:
+                if years and len(elem) + 5 >= min_pwd_length and len(elem) + 5 <= max_pwd_length:
                     for year in range(starting_year, ending_year + 1):
                         """
                         Symbol, attribute and year
@@ -309,7 +317,7 @@ def permutations_first_round(attributes, years, numbers, output_file):
             # ATTENTION - THIS WORKS WITH words_in_passphrase_max = 2 ONLY !
             par1, par2 = subset
 
-            if len(par1) + len(par2) >= min_pwd_length:
+            if len(par1) + len(par2) >= min_pwd_length and len(par1) + len(par2) <= max_pwd_length:
 
                 if par1.lower() != par1.capitalize():
                     f.write(par1.lower() + par2 + "\n")
@@ -318,7 +326,7 @@ def permutations_first_round(attributes, years, numbers, output_file):
                 else:
                     f.write(par1 + par2 + "\n")  # par1 par2
 
-            if numbers and len(par1) + len(par2) + 2 >= min_pwd_length:
+            if numbers and len(par1) + len(par2) + 2 >= min_pwd_length and len(par1) + len(par2) + 2 <= max_pwd_length:
 
                 if par1.lower() != par1.capitalize():
                     for number in range(starting_number, ending_number + 1):
@@ -331,7 +339,7 @@ def permutations_first_round(attributes, years, numbers, output_file):
                     for number in range(starting_number, ending_number + 1):
                         f.write(par1 + par2 + str(number) + "\n")  # par1 par2 number
 
-            if years and len(par1) + len(par2) + 4 >= min_pwd_length:
+            if years and len(par1) + len(par2) + 4 >= min_pwd_length and len(par1) + len(par2) + 4 <= max_pwd_length:
 
                 if par1.lower() != par1.capitalize():
                     for year in range(starting_year, ending_year + 1):
@@ -360,7 +368,7 @@ def permutations_second_round(subsets, years, numbers, output_file):
 
             for symbol in symbols:
 
-                if len(par1) + len(par2) + 1 >= min_pwd_length:
+                if len(par1) + len(par2) + 1 >= min_pwd_length and len(par1) + len(par2) + 1 <= max_pwd_length:
 
                     if par1.lower() != par1.capitalize():
                         f.write(par1.lower() + symbol + par2 + "\n")  # par1 symbol par2
@@ -369,7 +377,7 @@ def permutations_second_round(subsets, years, numbers, output_file):
                     else:
                         f.write(par1 + symbol + par2 + "\n")  # par1 symbol par2
 
-                if numbers and len(par1) + len(par2) + 3 >= min_pwd_length:
+                if numbers and len(par1) + len(par2) + 3 >= min_pwd_length and len(par1) + len(par2) + 3 <= max_pwd_length:
 
                     if par1.lower() != par1.capitalize():
                         for number in range(starting_number, ending_number + 1):
@@ -400,7 +408,7 @@ def permutations_second_round(subsets, years, numbers, output_file):
                                 par1 + par2 + symbol + str(number) + "\n"
                             )  # par1 par2 symbol number
 
-                if years and len(par1) + len(par2) + 5 >= min_pwd_length:
+                if years and len(par1) + len(par2) + 5 >= min_pwd_length and len(par1) + len(par2) + 5 <= max_pwd_length:
 
                     if par1.lower() != par1.capitalize():
                         for year in range(starting_year, ending_year + 1):
@@ -447,7 +455,7 @@ def permutations_third_round(subsets, years, numbers, output_file):
 
                 for symbol2 in symbols:
 
-                    if numbers and len(par1) + len(par2) + 4 >= min_pwd_length:
+                    if numbers and len(par1) + len(par2) + 4 >= min_pwd_length and len(par1) + len(par2) + 4 <= max_pwd_length:
 
                         if par1.lower() != par1.capitalize():
                             for number in range(starting_number, starting_number + 1):
@@ -481,7 +489,7 @@ def permutations_third_round(subsets, years, numbers, output_file):
                                     par1 + symbol + par2 + symbol2 + str(number) + "\n"
                                 )  # par1 symbol par2 symbol number
 
-                    if years and len(par1) + len(par2) + 6 >= min_pwd_length:
+                    if years and len(par1) + len(par2) + 6 >= min_pwd_length  and len(par1) + len(par2) + 6 <= max_pwd_length:
 
                         if par1.lower() != par1.capitalize():
                             for year in range(starting_year, ending_year + 1):
@@ -523,7 +531,7 @@ def common_passwords(attributes, years, numbers, output_file):
     """
     with open(output_file, "a+") as f:
         for elem in common_pwds:
-            if len(elem) >= min_pwd_length:
+            if len(elem) >= min_pwd_length and len(elem) <= max_pwd_length:
                 f.write(elem + "\n")
 
 
@@ -762,6 +770,7 @@ def main():
 
     if args.version:
         version()
+        sys.exit(0)
     if args.minlength:
         global min_pwd_length
         try:
@@ -771,6 +780,20 @@ def main():
             sys.exit(1)
         if min_pwd_length <= 0:
             print("-m requires an integer greater than 0.")
+            sys.exit(1)
+    if args.maxlength:
+        global max_pwd_length
+        try:
+            max_pwd_length = int(args.maxlength)
+        except Exception:
+            print("-M/--maxlength requires an integer greater than 0.")
+            sys.exit(1)
+        if max_pwd_length <= 0:
+            print("-M/--maxlength requires an integer greater than 0.")
+            sys.exit(1)
+    if args.minlength and args.minlength:
+        if max_pwd_length <= min_pwd_length:
+            print("maxlength must be greater than minlength.")
             sys.exit(1)
     if args.common_password_list:
         global common_pwds

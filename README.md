@@ -33,7 +33,7 @@ Usage 💻
 ----
 
 ```console
-usage: longtongue.py [-h] (-p | -c | -v) [-l | -L] [-y] [-n] [-m MINLENGTH] [-P COMMON_PASSWORD_LIST]
+usage: longtongue [-h] (-p | -c | -v) [-l | -L] [-y] [-n] [-m MINLENGTH] [-M MAXLENGTH] [-P COMMON_PASSWORD_LIST]
 
 Generate customized Password/Passphrase wordlist based on target information
 
@@ -48,6 +48,8 @@ options:
   -n, --numbers         Add also numbers to password. See numbers range inside longtongue.py
   -m, --minlength MINLENGTH
                         Set the minimum length for passwords (default 0).
+  -M, --maxlength MAXLENGTH
+                        Set the maximun length for passwords (default 100).
   -P, --common-password-list COMMON_PASSWORD_LIST
                         Set the file which contains common passwords (default included in the source).
 ```
