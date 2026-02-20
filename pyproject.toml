@@ -1,6 +1,6 @@
 [project]
 name = "longtongue"
-version = "1.2.0"
+version = "1.2.1"
 description = "Generate customized Password/Passphrase wordlist based on target information"
 readme = "README.md"
 requires-python = ">=3.8"
