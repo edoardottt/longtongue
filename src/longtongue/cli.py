@@ -71,7 +71,7 @@ ending_number = 99
 words_in_passphrase_max = 2  # HIGHLY recommended: _don't_ edit this
 items_limit = 200000  # unused now
 min_pwd_length = 0
-max_pwd_length = 0
+max_pwd_length = 200
 
 
 # ----- Initial swag -----
@@ -93,7 +93,7 @@ def banner():
 
 
 def version():
-    print("v1.2.1\n")
+    print("v1.2.2\n")
 
 
 # ----- Input -----
