@@ -93,7 +93,7 @@ def banner():
 
 
 def version():
-    print("v1.2.1\n")
+    print("v1.2.2\n")
 
 
 # ----- Input -----
