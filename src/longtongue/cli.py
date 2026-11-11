@@ -771,7 +771,7 @@ def main():
     if args.version:
         version()
         sys.exit(0)
-    if args.minlength:
+    if args.minlength is not None:
         global min_pwd_length
         try:
             min_pwd_length = int(args.minlength)
@@ -781,7 +781,7 @@ def main():
         if min_pwd_length <= 0:
             print("-m requires an integer greater than 0.")
             sys.exit(1)
-    if args.maxlength:
+    if args.maxlength is not None:
         global max_pwd_length
         try:
             max_pwd_length = int(args.maxlength)
